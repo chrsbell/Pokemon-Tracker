@@ -1,3 +1,7 @@
 package com.example.pokemontracker.ui
 
-interface BasePresenter {}
+import androidx.databinding.ViewDataBinding
+
+interface BasePresenter {
+    fun setBinding(binding: ViewDataBinding)
+}
