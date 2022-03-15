@@ -11,7 +11,7 @@
         android:theme="@style/Theme.PokemonTracker"
         android:allowBackup="true">
 
-        <activity android:name=".ui.finder.FinderActivity">
+        <activity android:name=".ui.tracker.TrackerActivity">
 
         </activity>
         <activity
