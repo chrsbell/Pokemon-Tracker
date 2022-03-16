@@ -6,12 +6,13 @@ import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.ActivityTrackerBinding
 import com.example.pokemontracker.ui.BaseActivity
 
-class TrackerActivity : BaseActivity<TrackerPresenter>() {
+class TrackerActivity : TrackerView, BaseActivity() {
+    private lateinit var presenter: TrackerPresenter
     private lateinit var binding: ActivityTrackerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = TrackerPresenter(this)
+        presenter = TrackerPresenter()
+        presenter.setView(this, lifecycle)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tracker)
-        presenter.setBinding(binding)
     }
 }

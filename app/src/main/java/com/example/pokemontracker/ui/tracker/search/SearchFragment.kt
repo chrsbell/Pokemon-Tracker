@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.apollographql.apollo3.exception.ApolloException
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentSearchBinding
@@ -21,15 +20,17 @@ class SearchFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
+
+        setupListAdapter()
+
         return binding.root
     }
 
     // Need to handle screen orientation change in onSaveInstanceState
 
-    // Might be able to put in onCreateView?
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    private fun setupListAdapter() {
         // lifecycle coroutine scope will cancel when fragment/activity destroyed
-         lifecycleScope.launchWhenResumed {
+        lifecycleScope.launchWhenResumed {
             val response = try {
                 pokemonRepository.getAllPokemon()
             } catch (e: ApolloException) {
@@ -40,7 +41,7 @@ class SearchFragment : Fragment() {
             val pokemon = response?.data?.allPokemon?.filterNotNull()
             if (pokemon != null && !response.hasErrors()) {
                 val adapter = PokemonAdapter(pokemon)
-                binding.searchListing.layoutManager = LinearLayoutManager(requireContext())
+//                binding.searchListing.layoutManager = LinearLayoutManager(requireContext())
                 binding.searchListing.adapter = adapter
             }
         }

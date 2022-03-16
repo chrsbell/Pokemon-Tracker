@@ -2,8 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-    </data>
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="PokemonOverviewCard"-->
+<!--            type="" />-->
+<!--    </data>-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,12 +17,13 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="173dp" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -51,22 +55,24 @@
                     android:layout_height="1dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/pokemon_image"
-                    tools:layout_editor_absoluteY="102dp" />
+                    app:layout_constraintStart_toEndOf="@+id/pokemon_image" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/pokemon_type_one"
                     style="@style/pokemon_type_bubble"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     app:cardCornerRadius="2dp"
                     app:cardElevation="2dp"
+                    app:layout_constraintBottom_toTopOf="@+id/pokemon_info_divider"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/pokemon_image"
-                    tools:layout_editor_absoluteY="72dp" />
+                    app:layout_constraintStart_toEndOf="@+id/pokemon_image" />
 
                 <TextView
                     android:id="@+id/pokemon_number"
