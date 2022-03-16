@@ -11,10 +11,11 @@ import com.apollographql.apollo3.exception.ApolloException
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentSearchBinding
 import com.example.pokemontracker.repositories.PokemonRepository
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 class SearchFragment : Fragment() {
-    private val pokemonRepository = PokemonRepository()
+    private val pokemonRepository: PokemonRepository by inject()
     private lateinit var binding: FragmentSearchBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

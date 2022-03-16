@@ -11,15 +11,16 @@ import com.example.pokemontracker.databinding.ActivityTitleBinding
 import com.example.pokemontracker.ui.BaseActivity
 import androidx.databinding.DataBindingUtil
 import com.example.pokemontracker.ui.tracker.TrackerActivity
+import org.koin.android.ext.android.inject
+
 
 class TitleActivity : TitleView, BaseActivity() {
-    private lateinit var presenter: TitlePresenter
+    private val presenter: TitlePresenter by inject()
     private lateinit var binding: ActivityTitleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         // potentially put this into base class
         super.onCreate(savedInstanceState)
-        // presenter needs to set up transitions before content view is set
-        presenter = TitlePresenter()
+        // need to set up transitions before content view is set
         presenter.setView(this, lifecycle)
         window.enterTransition = Fade()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_title)

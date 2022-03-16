@@ -3,15 +3,24 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'com.apollographql.apollo3' version '3.1.0'
+    id 'com.google.devtools.ksp' version "$koin_ksp_version"
 }
 
+apply plugin: 'com.google.devtools.ksp'
+
 android {
-    compileSdk 32
+    compileSdk 31
+
+    applicationVariants.all { variant ->
+        variant.sourceSets.java.each {
+            it.srcDirs += "build/generated/ksp/${variant.name}/kotlin"
+        }
+    }
 
     defaultConfig {
         applicationId "com.example.pokemontracker"
         minSdk 28
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
     }
@@ -45,9 +54,14 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     implementation 'com.jakewharton.timber:timber:5.0.1'
     implementation 'com.apollographql.apollo3:apollo-runtime:3.1.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-annotations:$koin_annotations"
+    ksp "io.insert-koin:koin-ksp-compiler:$koin_annotations"
 }
 
 apollo {

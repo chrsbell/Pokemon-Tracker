@@ -5,13 +5,14 @@ import androidx.databinding.DataBindingUtil
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.ActivityTrackerBinding
 import com.example.pokemontracker.ui.BaseActivity
+import org.koin.android.ext.android.inject
 
 class TrackerActivity : TrackerView, BaseActivity() {
-    private lateinit var presenter: TrackerPresenter
+    private val presenter: TrackerPresenter by inject()
     private lateinit var binding: ActivityTrackerBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = TrackerPresenter()
         presenter.setView(this, lifecycle)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tracker)
     }

@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
+        android:name="MainApplication"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,9 +13,7 @@
         android:theme="@style/Theme.PokemonTracker"
         android:allowBackup="true">
 
-        <activity android:name=".ui.tracker.TrackerActivity">
-
-        </activity>
+        <activity android:name=".ui.tracker.TrackerActivity" />
         <activity
             android:name=".ui.title.TitleActivity"
             android:exported="true">
