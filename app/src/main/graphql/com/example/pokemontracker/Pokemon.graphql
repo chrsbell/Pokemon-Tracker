@@ -1,11 +1,19 @@
 query Pokemon {
     allPokemon {
         name
+        nat_dex_num
+        generation
+        height
+        weight
+        pokedex_entries {
+            description
+        }
         types {
             name
         }
         sprites {
             front_default
+            back_default
         }
     }
 }
