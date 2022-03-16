@@ -12,7 +12,6 @@ class TrackerActivity : BaseActivity<TrackerPresenter>() {
         super.onCreate(savedInstanceState)
         presenter = TrackerPresenter(this)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tracker)
-        setContentView(R.layout.activity_tracker)
         presenter.setBinding(binding)
     }
 }

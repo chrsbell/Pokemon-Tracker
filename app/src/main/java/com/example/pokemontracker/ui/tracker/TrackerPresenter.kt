@@ -8,7 +8,6 @@ class TrackerPresenter(private val view: TrackerActivity) : BasePresenter {
     private lateinit var binding: ActivityTrackerBinding
 
     init {
-
     }
 
     override fun setBinding(binding: ViewDataBinding) {

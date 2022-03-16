@@ -1,0 +1,16 @@
+query Pokrmon {
+    allPokemon {
+        name
+        generation
+        pokedex_entries {
+            description
+        }
+        types {
+            name
+        }
+        sprites {
+            front_default
+            back_default
+        }
+    }
+}

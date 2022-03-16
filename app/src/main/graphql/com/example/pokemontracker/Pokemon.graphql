@@ -1,0 +1,11 @@
+query Pokemon {
+    allPokemon {
+        name
+        types {
+            name
+        }
+        sprites {
+            front_default
+        }
+    }
+}
