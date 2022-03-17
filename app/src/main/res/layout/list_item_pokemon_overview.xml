@@ -2,24 +2,25 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
 <!--    <data>-->
 <!--        <variable-->
-<!--            name="PokemonOverviewCard"-->
-<!--            type="" />-->
+<!--            name="pokemon"-->
+<!--            type="com.example.pokemontracker.repositories.PokemonData" />-->
 <!--    </data>-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="150dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/pokemon_info"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="8dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="2dp"
+            android:backgroundTint="@android:color/transparent"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,8 @@
                 <TextView
                     android:id="@+id/pokemon_name"
                     style="@style/pokemon_detail_text"
-                    android:text="Bulbasaur"
+                    android:text=""
+                    android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pokemon_image"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -63,27 +65,37 @@
                     app:layout_constraintStart_toEndOf="@+id/pokemon_image" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/pokemon_type_one"
+                    android:id="@+id/type_info"
                     style="@style/pokemon_type_bubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
                     app:layout_constraintBottom_toTopOf="@+id/pokemon_info_divider"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/pokemon_image" />
+                    app:layout_constraintStart_toEndOf="@+id/pokemon_image">
+
+                    <TextView
+                        android:id="@+id/pokemon_type_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_small"
+                        android:textAlignment="center" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/pokemon_number"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="#000"
-                    app:layout_constraintBottom_toTopOf="@+id/pokemon_type_one"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toTopOf="@+id/type_info"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pokemon_image"
                     app:layout_constraintTop_toBottomOf="@+id/pokemon_name" />
@@ -93,15 +105,15 @@
         </androidx.cardview.widget.CardView>
 
         <!--        <de.hdodenhof.circleimageview.CircleImageView-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            android:elevation="20dp"-->
-<!--            android:src="@drawable/ic_baseline_favorite_24"-->
-<!--            app:civ_border_color="#f36121"-->
-<!--            app:civ_border_width="2dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/pokemon_info"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/pokemon_info" />-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_marginEnd="8dp"-->
+        <!--            android:elevation="20dp"-->
+        <!--            android:src="@drawable/ic_baseline_favorite_24"-->
+        <!--            app:civ_border_color="#f36121"-->
+        <!--            app:civ_border_width="2dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/pokemon_info"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/pokemon_info" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

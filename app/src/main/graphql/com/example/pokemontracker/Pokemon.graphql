@@ -3,11 +3,6 @@ query Pokemon {
         name
         nat_dex_num
         generation
-        height
-        weight
-        pokedex_entries {
-            description
-        }
         types {
             name
         }

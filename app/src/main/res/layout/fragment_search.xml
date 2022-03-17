@@ -7,12 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <data>-->
-<!--            <variable-->
-<!--                name=""-->
-<!--                type="com.example.android.marsrealestate.overview.OverviewViewModel" />-->
-<!--        </data>-->
 
+<!--                    app:listData="@{pokemonList.allPokemon}"-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchListing"
             android:layout_width="409dp"
