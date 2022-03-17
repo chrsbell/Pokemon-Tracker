@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemontracker.repositories.PokemonData
 import com.example.pokemontracker.utils.ImageProcessor
 
-class PokemonAdapter (private val imageProcessor: ImageProcessor)
+class PokemonAdapter (private val onClickListener: OnClickListener, private val imageProcessor: ImageProcessor)
     : RecyclerView.Adapter<PokemonListItemViewHolder>() {
 
     private var allPokemon: List<PokemonData> = listOf()
@@ -20,10 +20,18 @@ class PokemonAdapter (private val imageProcessor: ImageProcessor)
     }
 
     override fun onBindViewHolder(holder: PokemonListItemViewHolder, position: Int) {
-        holder.bind(allPokemon[position])
+        val pokemon = allPokemon[position]
+        holder.bind(pokemon)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(pokemon)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonListItemViewHolder {
        return PokemonListItemViewHolder.from(parent, imageProcessor)
+    }
+
+    class OnClickListener(private val clickListener: (pokemon: PokemonData) -> Unit) {
+        fun onClick(pokemon: PokemonData) = clickListener(pokemon)
     }
 }

@@ -3,6 +3,8 @@ query Pokemon {
         name
         nat_dex_num
         generation
+        height
+        weight
         types {
             name
         }

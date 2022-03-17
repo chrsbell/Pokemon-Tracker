@@ -20,7 +20,7 @@ class MessageProvider() : LifecycleObserver {
         viewLifecycle.addObserver(this)
     }
 
-    fun showError(text: String) {
+    fun showMessage(text: String) {
         if (view != null) {
             val snackbar = Snackbar.make(view!!, text, Snackbar.LENGTH_SHORT)
             snackbar.show()

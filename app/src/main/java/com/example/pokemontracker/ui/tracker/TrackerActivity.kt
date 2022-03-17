@@ -15,5 +15,6 @@ class TrackerActivity : TrackerView, BaseActivity() {
         super.onCreate(savedInstanceState)
         presenter.setView(this, lifecycle)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tracker)
+        setSupportActionBar(binding.toolbar)
     }
 }

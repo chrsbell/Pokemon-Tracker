@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PokemonTracker"
         android:allowBackup="true">
 
-        <activity android:name=".ui.tracker.TrackerActivity" />
+        <activity android:name=".ui.tracker.TrackerActivity"/>
         <activity
             android:name=".ui.title.TitleActivity"
             android:exported="true">

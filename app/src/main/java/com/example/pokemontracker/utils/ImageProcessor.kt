@@ -8,6 +8,7 @@ import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.ColorInt
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.palette.graphics.Palette
@@ -21,8 +22,6 @@ class ImageProcessor() : Messaging {
     // the snackbar message provider will be different depending on what view the app is in
     private lateinit var messageProvider: MessageProvider
     private lateinit var coroutineScope: LifecycleCoroutineScope
-    @ColorInt
-    val defaultGradientColor: Int = Color.parseColor("#ffd9ff04")
 
     fun getUri(imgUrl : String?) = imgUrl?.toUri()?.buildUpon()?.scheme("https")?.build()
 
@@ -30,7 +29,7 @@ class ImageProcessor() : Messaging {
         this.messageProvider = messageProvider
     }
 
-    fun loadImage(imageView: ImageView, uri: Uri) {
+    fun loadImage(imageView: ImageView, uri: Uri, itemView: View) {
         Glide.with(imageView.context)
             .load(uri)
             .into(object : CustomViewTarget<ImageView, Drawable>(imageView) {
@@ -39,13 +38,14 @@ class ImageProcessor() : Messaging {
                     transition: Transition<in Drawable>?
                 ) {
                     imageView.setImageDrawable(resource)
+                    setGradientAsync(itemView, resource.toBitmap())
                 }
 
                 override fun onResourceCleared(placeholder: Drawable?) {
                 }
 
                 override fun onLoadFailed(errorDrawable: Drawable?) {
-                    messageProvider.showError("Couldn't load image.")
+                    messageProvider.showMessage("Couldn't load image.")
                 }
             })
     }
@@ -57,8 +57,8 @@ class ImageProcessor() : Messaging {
                 if (palette != null) {
                     view.background = GradientDrawable(
                         GradientDrawable.Orientation.LEFT_RIGHT, intArrayOf(
-                            palette.getVibrantColor(defaultGradientColor),
-                            palette.getDarkVibrantColor(defaultGradientColor)
+                            palette.getVibrantColor(Color.TRANSPARENT),
+                            Color.TRANSPARENT
                         )
                     )
                 }
