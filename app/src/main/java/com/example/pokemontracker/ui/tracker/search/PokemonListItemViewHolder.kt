@@ -34,7 +34,7 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
     private var defaultAnimationTime = 1000L
     private val yAnimationDistance = 25;
 
-    // Animate a pokemon sprite using the pokemon weight
+    // Animate a pokemon sprite using the pokemon weight (move into separate class)
     private fun animateSprite(pokemonData: PokemonData, imageView: ImageView) {
         var animationTime = pokemonData.weight?.toLong()?.div(3);
         if (animationTime == null || animationTime == 0L) {
