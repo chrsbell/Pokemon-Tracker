@@ -16,15 +16,15 @@ class SearchPresenter(
     private val imageProcessor: ImageProcessor,
     private val messageProvider: MessageProvider
 ) : BasePresenter<SearchFragment>() {
-    private var allPokemon: List<Pokemon>? = listOf()
 
-    override fun setView(view: SearchFragment, viewLifecycle: Lifecycle) {
-        super.setView(view, viewLifecycle)
+    override fun start(view: SearchFragment, viewLifecycle: Lifecycle) {
+        super.start(view, viewLifecycle)
         view.setSnackbarView(messageProvider)
         imageProcessor.setMessageProvider(messageProvider)
+        this.setupListAdapter()
     }
 
-    fun start() {
+    private fun setupListAdapter() {
         // lifecycle coroutine scope will cancel when fragment/activity destroyed
         val adapter = PokemonAdapter(PokemonAdapter.OnClickListener {
             messageProvider.showMessage("${it.name} tapped")
@@ -32,15 +32,12 @@ class SearchPresenter(
         view?.setListAdapter(adapter)
         viewLifecycle?.coroutineScope?.launchWhenResumed {
             view?.context?.let { pokemonRepository.initDb(it) }
-            allPokemon = try {
-                pokemonRepository.getAllPokemon()
-            } catch (e: ApolloException) {
-                messageProvider.showError("Network error.")
-                null
-            }
+            val allPokemon = pokemonRepository.getAllPokemon()
 
             if (allPokemon != null) {
-                adapter.updateData(allPokemon!!)
+                adapter.updateData(allPokemon)
+            } else {
+                messageProvider.showError("Network error.")
             }
         }
     }

@@ -22,7 +22,9 @@ class TrackerActivity : TrackerView, MessageView, BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tracker)
-        presenter.setView(this, lifecycle)
+        presenter.start(this, lifecycle)
+        // used to check if theme changed between start of last activity
+        // and start of current activity
         presenter.setThemeOnCreate(this)
         if (savedInstanceState != null) {
             val lastTheme = savedInstanceState.getBoolean(LAST_THEME)

@@ -18,8 +18,8 @@ class TrackerPresenter(private val preferencesRepository: PreferencesRepository,
         themeOnCreate = preferencesRepository.isDarkTheme(trackerActivity)
     }
 
-    override fun setView(view: TrackerActivity, viewLifecycle: Lifecycle) {
-        super.setView(view, viewLifecycle)
+    override fun start(view: TrackerActivity, viewLifecycle: Lifecycle) {
+        super.start(view, viewLifecycle)
         view.setSnackbarView(messageProvider)
     }
 

@@ -20,7 +20,7 @@ class TitleActivity : TitleView, BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // need to set up transitions before content view is set
-        presenter.setView(this, lifecycle)
+        presenter.start(this, lifecycle)
         window.enterTransition = Fade()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_title)
     }

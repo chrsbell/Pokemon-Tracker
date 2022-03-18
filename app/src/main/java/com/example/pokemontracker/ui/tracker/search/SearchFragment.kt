@@ -20,8 +20,7 @@ class SearchFragment : SearchView, MessageView, Fragment() {
                               savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container,
             false)
-        presenter.setView(this, lifecycle)
-        presenter.start()
+        presenter.start(this, lifecycle)
         return binding.root
     }
 
