@@ -20,6 +20,7 @@ import kotlin.random.Random
 
 class PokemonListItemViewHolder(itemView: View, private val imageProcessor: ImageProcessor)
     : RecyclerView.ViewHolder(itemView) {
+    // look into data binding here
     private val pokemonName: TextView = itemView.findViewById(R.id.pokemon_name)
     private val pokemonImg: ImageView = itemView.findViewById(R.id.pokemon_image)
     private val pokemonTypeOne: TextView = itemView.findViewById(R.id.pokemon_type_one)
@@ -33,6 +34,7 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
     private var defaultAnimationTime = 1000L
     private val yAnimationDistance = 25;
 
+    // Animate a pokemon sprite using the pokemon weight
     private fun animateSprite(pokemonData: PokemonData, imageView: ImageView) {
         var animationTime = pokemonData.weight?.toLong()?.div(3);
         if (animationTime == null || animationTime == 0L) {
@@ -57,9 +59,15 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
         pokemonName.text = item.name?.let { formatPokemonName(it) }
         pokemonTypeOne.text = item.typeOne
         if (item.typeTwo != null) {
+            // make sure both type cards are centered
             pokemonTypeTwo.text = item.typeTwo
+            pokemonTypeTwoCard.visibility = View.VISIBLE
+            val constraintLayout = pokemonTypeOneCard.layoutParams as ConstraintLayout.LayoutParams
+            constraintLayout.endToEnd = pokemonNumber.id
+            constraintLayout.endToStart = pokemonTypeTwoCard.id
+            pokemonTypeOneCard.requestLayout()
         } else {
-            // center type card if there is only one
+            // center type card if there is only one type
             pokemonTypeTwoCard.visibility = View.INVISIBLE
             val constraintLayout = pokemonTypeOneCard.layoutParams as ConstraintLayout.LayoutParams
             constraintLayout.endToEnd = pokemonNumber.id

@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PokemonTracker"
+        android:theme="@style/Theme.PokemonTracker.Light"
         android:allowBackup="true">
 
         <activity android:name=".ui.tracker.TrackerActivity"/>

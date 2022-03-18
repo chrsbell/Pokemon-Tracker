@@ -8,10 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentSearchBinding
+import com.example.pokemontracker.utils.MessageView
 import com.example.pokemontracker.utils.MessageProvider
 import org.koin.android.ext.android.inject
 
-class SearchFragment : SearchView, Fragment() {
+class SearchFragment : SearchView, MessageView, Fragment() {
     private val presenter: SearchPresenter by inject()
     private lateinit var binding: FragmentSearchBinding
 
@@ -28,7 +29,7 @@ class SearchFragment : SearchView, Fragment() {
         binding.searchListing.adapter = adapter
     }
 
-    fun setSnackbarView(messageProvider: MessageProvider) {
+    override fun setSnackbarView(messageProvider: MessageProvider) {
         messageProvider.setView(binding.root, lifecycle)
     }
     // Need to handle screen orientation change in onSaveInstanceState

@@ -18,7 +18,6 @@ class TitleActivity : TitleView, BaseActivity() {
     private val presenter: TitlePresenter by inject()
     private lateinit var binding: ActivityTitleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        // potentially put this into base class
         super.onCreate(savedInstanceState)
         // need to set up transitions before content view is set
         presenter.setView(this, lifecycle)

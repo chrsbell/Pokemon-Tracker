@@ -1,19 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PokemonTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.PokemonTracker.Light" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowActivityTransitions">true</item>
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/dark</item>
+        <item name="colorPrimary">@color/light</item>
         <item name="colorPrimaryVariant">@color/neutral_1</item>
-        <item name="colorSecondary">@color/light</item>
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/white</item>-->
-        <!-- Secondary brand color. -->
-<!--        <item name="colorSecondaryVariant">@color/neutral_3</item>-->
-<!--        <item name="colorOnSecondary">@color/neutral_2</item>-->
-        <!-- Status bar color. -->
+        <item name="colorSecondary">@color/neutral_2</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:titleTextColor">@color/white</item>
+    </style>
+
+    <style name="Theme.PokemonTracker.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="colorPrimary">@color/dark</item>
+        <item name="colorPrimaryVariant">@color/dark</item>
+        <item name="colorSecondary">@color/dark </item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:titleTextColor">@color/white</item>
     </style>
 
     <style name="pokemon_detail_text">

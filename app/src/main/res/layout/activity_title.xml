@@ -7,14 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/neutral_1"
-        android:theme="@style/Theme.PokemonTracker"
+        android:theme="@style/Theme.PokemonTracker.Light"
         tools:context=".ui.title.TitleActivity">
 
         <TextView
             android:id="@+id/helloWorld"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="Pokemon Tracker"
             android:textColor="#4E342E"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -32,31 +32,13 @@ class SearchPresenter(
         }, imageProcessor)
         view?.setListAdapter(adapter)
         viewLifecycle?.coroutineScope?.launchWhenResumed {
-            val response = try {
+            allPokemon = try {
                 pokemonRepository.getAllPokemon()
             } catch (e: ApolloException) {
-                Timber.d("Failed to fetch pokemon.", e) // show an error toast here/image
+                messageProvider.showError("Network error.")
                 null
             }
 
-            allPokemon = response?.data?.allPokemon?.filterNotNull()
-                ?.map { info ->
-                    var typeTwo: String? = null
-                    if (info.types?.size == 2) {
-                        typeTwo = info.types[1]?.name
-                    }
-                    PokemonData(
-                        name = info.name,
-                        num = info.nat_dex_num,
-                        generation = info.generation,
-                        height = info.height,
-                        weight = info.weight,
-                        typeOne = info.types?.get(0)?.name,
-                        typeTwo = typeTwo,
-                        frontSprite = imageProcessor.getUri(info.sprites?.front_default),
-                        backSprite = imageProcessor.getUri(info.sprites?.back_default)
-                    )
-                }
             if (allPokemon != null) {
                 adapter.updateData(allPokemon!!)
             }
