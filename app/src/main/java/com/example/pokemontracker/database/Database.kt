@@ -5,12 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Pokemon::class, Favorite::class], exportSchema = false, version = 1)
+@Database(entities = [Pokemon::class], exportSchema = false, version = 5)
 abstract class PokemonDatabase : RoomDatabase() {
     abstract fun pokemonDao(): PokemonDao
-    abstract fun favoriteDao(): FavoriteDao
 }
 
 fun getDatabase(context: Context) = Room.databaseBuilder(context,  PokemonDatabase::class.java,
     "pokemon-db")
+    .fallbackToDestructiveMigration()
     .build()

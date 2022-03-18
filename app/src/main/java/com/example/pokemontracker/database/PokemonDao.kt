@@ -3,6 +3,7 @@ package com.example.pokemontracker.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface PokemonDao {
@@ -14,4 +15,7 @@ interface PokemonDao {
 
     @Insert
     suspend fun insertAll(vararg pokemon: Pokemon)
+
+    @Update
+    suspend fun updatePokemon(pokemon: Pokemon)
 }

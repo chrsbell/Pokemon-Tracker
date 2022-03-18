@@ -7,14 +7,16 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "pokemon")
 data class Pokemon (
-    @PrimaryKey val num: Int?,
-    @ColumnInfo(name = "name") val name: String?,
-    @ColumnInfo(name = "generation")val generation: String?,
-    @ColumnInfo(name = "height")val height: Int? = 0,
-    @ColumnInfo(name = "weight")val weight: Int? = 0,
-    @ColumnInfo(name = "entry")val entry: String? = "",
-    @ColumnInfo(name = "typeOne")val typeOne: String?,
-    @ColumnInfo(name = "typeTwo")val typeTwo: String?,
-    @ColumnInfo(name = "frontSprite")val frontSprite: String?,
-    @ColumnInfo(name = "backSprite")val backSprite: String?
+    @PrimaryKey val num: Int,
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "generation") var generation: String = "",
+    @ColumnInfo(name = "height") var height: Int = 0,
+    @ColumnInfo(name = "weight") var weight: Int = 0,
+    @ColumnInfo(name = "entry") var entry: String = "",
+    @ColumnInfo(name = "typeOne") var typeOne: String,
+    @ColumnInfo(name = "typeTwo") var typeTwo: String? = null,
+    @ColumnInfo(name = "frontSprite") var frontSprite: String,
+    @ColumnInfo(name = "backSprite") var backSprite: String? = null,
+    @ColumnInfo(name = "isDetailed") var isDetailed: Boolean = false,// whether data is complete
+    @ColumnInfo(name = "isFavorite") var isFavorite: Boolean = false
 )

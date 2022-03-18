@@ -6,8 +6,8 @@ import com.example.pokemontracker.ui.tracker.TrackerActivity
 import org.koin.core.annotation.Factory
 
 @Factory
-class TitlePresenter() : BasePresenter<TitleView>() {
+class TitlePresenter() : BasePresenter<TitleActivity>() {
     fun handleNavigate(shouldStart: Boolean) {
-        if (shouldStart) view?.launchActivity(TrackerActivity::class.java)
+        if (shouldStart) view.launchActivity(TrackerActivity::class.java)
     }
 }

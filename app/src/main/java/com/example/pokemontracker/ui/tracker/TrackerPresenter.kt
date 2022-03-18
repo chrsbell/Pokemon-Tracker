@@ -4,12 +4,13 @@ import android.view.MenuItem
 import androidx.lifecycle.Lifecycle
 import com.example.pokemontracker.repositories.PreferencesRepository
 import com.example.pokemontracker.ui.BasePresenter
-import com.example.pokemontracker.utils.MessageProvider
+import com.example.pokemontracker.ui.snackbar.MessageProvider
 import org.koin.core.annotation.Factory
 
 @Factory
 class TrackerPresenter(private val preferencesRepository: PreferencesRepository,
-                       private val messageProvider: MessageProvider)
+                       private val messageProvider: MessageProvider
+)
     : BasePresenter<TrackerActivity>() {
 
     var themeOnCreate: Boolean = false
@@ -25,8 +26,8 @@ class TrackerPresenter(private val preferencesRepository: PreferencesRepository,
 
     fun onThemeSelect(item: MenuItem) {
         // this is the only activity whose descendants will use theming
-        view?.let { preferencesRepository.setTheme(it, item) }
-        view?.restart()
+        preferencesRepository.setTheme(view, item)
+        view.restart()
     }
 
     fun checkIfNewTheme(lastTheme: Boolean) {

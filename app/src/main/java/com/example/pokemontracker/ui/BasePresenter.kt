@@ -3,9 +3,9 @@ package com.example.pokemontracker.ui
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 
-abstract class BasePresenter<View> : LifecycleObserver {
-    protected var view: View? = null
-    protected var viewLifecycle: Lifecycle? = null
+abstract class BasePresenter<View: Any> : LifecycleObserver {
+    protected lateinit var view: View
+    protected lateinit var viewLifecycle: Lifecycle
 
     open fun start(view: View, viewLifecycle: Lifecycle) {
         this.view = view

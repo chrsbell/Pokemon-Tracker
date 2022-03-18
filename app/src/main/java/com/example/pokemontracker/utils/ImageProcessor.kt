@@ -4,17 +4,18 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.net.Uri
 import android.view.View
 import android.widget.ImageView
-import androidx.annotation.ColorInt
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.transition.Transition
+import com.example.pokemontracker.ui.snackbar.MessageProvider
+import com.example.pokemontracker.ui.snackbar.Messaging
 import org.koin.core.annotation.Single
 
 @Single
@@ -29,16 +30,19 @@ class ImageProcessor() : Messaging {
         this.messageProvider = messageProvider
     }
 
-    fun loadImage(imageView: ImageView, url: String, itemView: View) {
+    fun loadImage(imageView: ImageView, url: String, itemView: View? = null) {
         Glide.with(imageView.context)
             .load(url.toUri())
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(object : CustomViewTarget<ImageView, Drawable>(imageView) {
                 override fun onResourceReady(
                     resource: Drawable,
                     transition: Transition<in Drawable>?
                 ) {
                     imageView.setImageDrawable(resource)
-                    setGradientAsync(itemView, resource.toBitmap())
+                    if (itemView != null) {
+                        setGradientAsync(itemView, resource.toBitmap())
+                    }
                 }
 
                 override fun onResourceCleared(placeholder: Drawable?) {

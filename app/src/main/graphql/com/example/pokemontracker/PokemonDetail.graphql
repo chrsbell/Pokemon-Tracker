@@ -1,9 +1,11 @@
-query PokemonDetail {
-    allPokemon {
+query PokemonDetail($id: Int!) {
+    pokemon(id: $id) {
         pokedex_entries {
             description
         }
         height
-        weight
+        sprites {
+            back_default
+        }
     }
 }

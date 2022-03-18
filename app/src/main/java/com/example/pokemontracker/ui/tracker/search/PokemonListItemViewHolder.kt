@@ -16,13 +16,13 @@ import com.example.pokemontracker.utils.formatPokemonNumber
 class PokemonListItemViewHolder(itemView: View, private val imageProcessor: ImageProcessor)
     : RecyclerView.ViewHolder(itemView) {
     // look into data binding here
-    private val pokemonName: TextView = itemView.findViewById(R.id.pokemon_name)
-    private val pokemonImg: ImageView = itemView.findViewById(R.id.pokemon_image)
-    private val pokemonTypeOne: TextView = itemView.findViewById(R.id.pokemon_type_one)
-    private val pokemonTypeOneCard: CardView = itemView.findViewById(R.id.type_info_one)
-    private val pokemonTypeTwo: TextView = itemView.findViewById(R.id.pokemon_type_two)
-    private val pokemonTypeTwoCard: CardView = itemView.findViewById(R.id.type_info_two)
-    private val pokemonNumber: TextView = itemView.findViewById(R.id.pokemon_number)
+    private val pokemonName: TextView = itemView.findViewById(R.id.pokemon_overview_name)
+    private val pokemonImg: ImageView = itemView.findViewById(R.id.pokemon_overview_image)
+    private val pokemonTypeOne: TextView = itemView.findViewById(R.id.pokemon_overview_type_text_one)
+    private val pokemonTypeOneCard: CardView = itemView.findViewById(R.id.pokemon_overview_type_card_one)
+    private val pokemonTypeTwo: TextView = itemView.findViewById(R.id.pokemon_overview_type_text_two)
+    private val pokemonTypeTwoCard: CardView = itemView.findViewById(R.id.pokemon_overview_type_card_two)
+    private val pokemonNumber: TextView = itemView.findViewById(R.id.pokemon_overview_number)
 
     private var animateUp = true;
     // look into alternative for this
@@ -32,8 +32,8 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
 
     // Animate a pokemon sprite using the pokemon weight (move into separate class)
     private fun animateSprite(pokemonData: Pokemon, imageView: ImageView) {
-        var animationTime = pokemonData.weight?.toLong()?.div(3);
-        if (animationTime == null || animationTime == 0L) {
+        var animationTime = pokemonData.weight.toLong().div(3);
+        if (animationTime == 0L) {
             animationTime = defaultAnimationTime
         }
         handler.postDelayed({
@@ -52,7 +52,7 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
 
     fun bind(item: Pokemon) {
         // bind sprite, etc
-        pokemonName.text = item.name?.let { formatPokemonName(it) }
+        pokemonName.text = item.name.let { formatPokemonName(it) }
         pokemonTypeOne.text = item.typeOne
         if (item.typeTwo != null) {
             // make sure both type cards are centered
@@ -70,8 +70,9 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
             constraintLayout.endToStart = ConstraintLayout.LayoutParams.UNSET
             pokemonTypeOneCard.requestLayout()
         }
-        pokemonNumber.text = item.num?.let { formatPokemonNumber(item.num) }
-        item.frontSprite?.let { imageProcessor.loadImage(pokemonImg, it, itemView) }
+        pokemonNumber.text = formatPokemonNumber(item.num)
+        imageProcessor.loadImage(pokemonImg, item.frontSprite, itemView)
+
         // remove all pre-existing callbacks
         handler.removeCallbacksAndMessages(null)
         animateSprite(item, pokemonImg)

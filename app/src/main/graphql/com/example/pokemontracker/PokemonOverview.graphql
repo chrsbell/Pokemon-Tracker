@@ -1,16 +1,13 @@
-query Pokemon {
+query PokemonOverview {
     allPokemon {
         name
         nat_dex_num
-        generation
-        height
         weight
         types {
             name
         }
         sprites {
             front_default
-            back_default
         }
     }
 }

@@ -7,8 +7,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.ActivityTrackerBinding
 import com.example.pokemontracker.ui.BaseActivity
-import com.example.pokemontracker.utils.MessageProvider
-import com.example.pokemontracker.utils.MessageView
+import com.example.pokemontracker.ui.snackbar.MessageProvider
+import com.example.pokemontracker.ui.snackbar.MessageView
 import org.koin.android.ext.android.inject
 
 class TrackerActivity : TrackerView, MessageView, BaseActivity() {

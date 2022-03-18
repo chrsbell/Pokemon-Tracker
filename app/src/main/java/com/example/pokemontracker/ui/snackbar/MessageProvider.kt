@@ -1,11 +1,10 @@
-package com.example.pokemontracker.utils
+package com.example.pokemontracker.ui.snackbar
 
 import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import com.google.android.material.snackbar.Snackbar
 import org.koin.core.annotation.Factory
-import org.koin.core.annotation.Single
 import timber.log.Timber
 
 @Factory
@@ -14,7 +13,7 @@ class MessageProvider() : LifecycleObserver {
     private var viewLifecycle: Lifecycle? = null
 
     companion object {
-        val CONFIRM_TEXT = "CONFIRM"
+        const val CONFIRM_TEXT = "CONFIRM"
     }
 
     fun setView(view: View, viewLifecycle: Lifecycle) {
