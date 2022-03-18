@@ -1,22 +1,17 @@
 package com.example.pokemontracker.ui.tracker.search
 
-import android.opengl.Visibility
 import android.os.Handler
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemontracker.R
-import com.example.pokemontracker.repositories.PokemonData
+import com.example.pokemontracker.database.Pokemon
 import com.example.pokemontracker.utils.ImageProcessor
 import com.example.pokemontracker.utils.formatPokemonName
 import com.example.pokemontracker.utils.formatPokemonNumber
-import kotlin.random.Random
 
 class PokemonListItemViewHolder(itemView: View, private val imageProcessor: ImageProcessor)
     : RecyclerView.ViewHolder(itemView) {
@@ -30,12 +25,13 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
     private val pokemonNumber: TextView = itemView.findViewById(R.id.pokemon_number)
 
     private var animateUp = true;
+    // look into alternative for this
     private var handler = Handler()
     private var defaultAnimationTime = 1000L
     private val yAnimationDistance = 25;
 
     // Animate a pokemon sprite using the pokemon weight (move into separate class)
-    private fun animateSprite(pokemonData: PokemonData, imageView: ImageView) {
+    private fun animateSprite(pokemonData: Pokemon, imageView: ImageView) {
         var animationTime = pokemonData.weight?.toLong()?.div(3);
         if (animationTime == null || animationTime == 0L) {
             animationTime = defaultAnimationTime
@@ -54,7 +50,7 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
         }, animationTime)
     }
 
-    fun bind(item: PokemonData) {
+    fun bind(item: Pokemon) {
         // bind sprite, etc
         pokemonName.text = item.name?.let { formatPokemonName(it) }
         pokemonTypeOne.text = item.typeOne
@@ -79,14 +75,5 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
         // remove all pre-existing callbacks
         handler.removeCallbacksAndMessages(null)
         animateSprite(item, pokemonImg)
-    }
-
-    companion object {
-        fun from(parent: ViewGroup, imageProcessor: ImageProcessor): PokemonListItemViewHolder {
-            return PokemonListItemViewHolder(
-                LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_item_pokemon_overview, parent, false),
-                imageProcessor)
-        }
     }
 }

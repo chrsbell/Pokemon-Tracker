@@ -66,7 +66,13 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
-    implementation("com.android.support:palette-v7:31.0.0")
+    implementation "com.android.support:palette-v7:31.0.0"
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    // room coroutines
+    implementation "androidx.room:room-ktx:$roomVersion"
 }
 
 apollo {

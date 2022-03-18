@@ -1,20 +1,20 @@
 package com.example.pokemontracker.ui.tracker.search
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokemontracker.repositories.PokemonData
+import com.example.pokemontracker.R
+import com.example.pokemontracker.database.Pokemon
 import com.example.pokemontracker.utils.ImageProcessor
 
 class PokemonAdapter (private val onClickListener: OnClickListener, private val imageProcessor: ImageProcessor)
     : RecyclerView.Adapter<PokemonListItemViewHolder>() {
 
-    private var allPokemon: List<PokemonData> = listOf()
+    private var allPokemon: List<Pokemon> = listOf()
 
-    override fun getItemCount(): Int {
-        return allPokemon.size
-    }
+    override fun getItemCount(): Int = allPokemon.size
 
-    fun updateData(allPokemon: List<PokemonData>) {
+    fun updateData(allPokemon: List<Pokemon>) {
         this.allPokemon = allPokemon
         notifyDataSetChanged()
     }
@@ -27,11 +27,13 @@ class PokemonAdapter (private val onClickListener: OnClickListener, private val 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonListItemViewHolder {
-       return PokemonListItemViewHolder.from(parent, imageProcessor)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonListItemViewHolder =
+        PokemonListItemViewHolder(
+           LayoutInflater.from(parent.context)
+               .inflate(R.layout.list_item_pokemon_overview, parent, false),
+           imageProcessor)
 
-    class OnClickListener(private val clickListener: (pokemon: PokemonData) -> Unit) {
-        fun onClick(pokemon: PokemonData) = clickListener(pokemon)
+    class OnClickListener(private val clickListener: (pokemon: Pokemon) -> Unit) {
+        fun onClick(pokemon: Pokemon) = clickListener(pokemon)
     }
 }

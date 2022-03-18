@@ -29,9 +29,9 @@ class ImageProcessor() : Messaging {
         this.messageProvider = messageProvider
     }
 
-    fun loadImage(imageView: ImageView, uri: Uri, itemView: View) {
+    fun loadImage(imageView: ImageView, url: String, itemView: View) {
         Glide.with(imageView.context)
-            .load(uri)
+            .load(url.toUri())
             .into(object : CustomViewTarget<ImageView, Drawable>(imageView) {
                 override fun onResourceReady(
                     resource: Drawable,
