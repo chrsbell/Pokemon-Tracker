@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.ActivityTrackerBinding
 import com.example.pokemontracker.ui.BaseActivity
@@ -11,7 +15,7 @@ import com.example.pokemontracker.ui.snackbar.MessageProvider
 import com.example.pokemontracker.ui.snackbar.MessageView
 import org.koin.android.ext.android.inject
 
-class TrackerActivity : TrackerView, MessageView, BaseActivity() {
+class TrackerActivity : MessageView, BaseActivity() {
     private val presenter: TrackerPresenter by inject()
     private lateinit var binding: ActivityTrackerBinding
 
@@ -22,6 +26,12 @@ class TrackerActivity : TrackerView, MessageView, BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tracker)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.searchNavContainer) as NavHostFragment
+        val navController = navHostFragment.navController
+//        NavigationUI.setupActionBarWithNavController(this, navController, binding.toolbar)
+        NavigationUI.setupWithNavController(binding.bottomMenu, findNavController(R.id.searchNavContainer))
+//        binding.bottomMenu.setupWithNavController(navController)
+        setSupportActionBar(binding.toolbar)
         presenter.start(this, lifecycle)
         // used to check if theme changed between start of last activity
         // and start of current activity
@@ -30,7 +40,6 @@ class TrackerActivity : TrackerView, MessageView, BaseActivity() {
             val lastTheme = savedInstanceState.getBoolean(LAST_THEME)
             presenter.checkIfNewTheme(lastTheme)
         }
-        setSupportActionBar(binding.toolbar)
     }
 
     fun restart() {

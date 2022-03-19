@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <androidx.fragment.app.FragmentContainerView
+        <fragment
             android:id="@+id/searchNavContainer"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"

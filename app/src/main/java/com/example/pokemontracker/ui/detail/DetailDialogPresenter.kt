@@ -16,16 +16,12 @@ class DetailDialogPresenter(
             imageProcessor.loadImage(imageView, imageUrl)
         }
 
-        fun onFavorite(pokemonIndex: Int) {
+    fun onFavorite(pokemonIndex: Int) {
             viewLifecycle.coroutineScope.launchWhenResumed {
                 val pokemon = repository.findByPokedexNumber(pokemonIndex)
                 pokemon.isFavorite = !pokemon.isFavorite
                 repository.updatePokemon(pokemon)
                 view.updateFavoriteIcon(pokemon.isFavorite)
             }
-        }
-
-        fun addPokemonInfoToView() {
-
         }
 }

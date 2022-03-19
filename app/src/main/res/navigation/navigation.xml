@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.pokemontracker.ui.tracker.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.pokemontracker.ui.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" />
 </navigation>

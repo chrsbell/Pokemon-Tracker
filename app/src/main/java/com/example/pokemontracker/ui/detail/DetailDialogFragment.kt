@@ -40,7 +40,6 @@ class DetailDialogFragment() : DialogFragment() {
         typeTwo = arguments?.getString(BUNDLE_TYPE_TWO_KEY)
         imageUrl = arguments?.getString(BUNDLE_IMAGE_KEY)
         isFavorite = arguments?.getString(BUNDLE_FAVORITE_KEY).toBoolean()
-        presenter.start(this, lifecycle)
     }
 
     override fun onCreateView(
@@ -68,6 +67,9 @@ class DetailDialogFragment() : DialogFragment() {
         })
         this.isFavorite?.let { updateFavoriteIcon(it) }
         imageUrl?.let { presenter.loadImage(binding.pokemonDetailImage, it) }
+
+        presenter.start(this, lifecycle)
+
         return binding.root
     }
 

@@ -13,7 +13,7 @@ import com.example.pokemontracker.ui.snackbar.MessageView
 import com.example.pokemontracker.ui.snackbar.MessageProvider
 import org.koin.android.ext.android.inject
 
-class SearchFragment : SearchView, MessageView, Fragment() {
+class SearchFragment : MessageView, Fragment() {
     private val presenter: SearchPresenter by inject()
     private lateinit var binding: FragmentSearchBinding
 
@@ -25,7 +25,7 @@ class SearchFragment : SearchView, MessageView, Fragment() {
         return binding.root
     }
 
-    override fun showDialog(options: Map<String, String>) {
+    fun showDialog(options: Map<String, String>) {
         val bundle = Bundle()
         options.forEach {it ->
             bundle.putString(it.key, it.value)
@@ -37,7 +37,7 @@ class SearchFragment : SearchView, MessageView, Fragment() {
         )
     }
 
-    override fun setListAdapter(adapter: PokemonAdapter) {
+    fun setListAdapter(adapter: PokemonAdapter) {
         binding.searchListing.adapter = adapter
     }
 
