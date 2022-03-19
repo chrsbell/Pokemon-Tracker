@@ -14,7 +14,7 @@ import com.example.pokemontracker.ui.tracker.TrackerActivity
 import org.koin.android.ext.android.inject
 
 
-class TitleActivity : TitleView, BaseActivity() {
+class TitleActivity : BaseActivity() {
     private val presenter: TitlePresenter by inject()
     private lateinit var binding: ActivityTitleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class TitleActivity : TitleView, BaseActivity() {
         return super.onTouchEvent(event)
     }
 
-    override fun launchActivity(target: Class<*>) {
+    fun launchActivity(target: Class<*>) {
         val intent = Intent(this, TrackerActivity::class.java)
         ContextCompat.startActivity(
             this,

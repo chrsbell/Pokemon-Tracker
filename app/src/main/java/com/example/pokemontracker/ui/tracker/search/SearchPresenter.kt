@@ -31,7 +31,8 @@ class SearchPresenter(
                 DetailDialogFragment.BUNDLE_NUM_KEY to pokemon.num.toString(),
                 DetailDialogFragment.BUNDLE_ENTRY_KEY to pokemon.entry,
                 DetailDialogFragment.BUNDLE_TYPE_ONE_KEY to pokemon.typeOne,
-                DetailDialogFragment.BUNDLE_IMAGE_KEY to pokemon.frontSprite
+                DetailDialogFragment.BUNDLE_IMAGE_KEY to pokemon.frontSprite,
+                DetailDialogFragment.BUNDLE_FAVORITE_KEY to pokemon.isFavorite.toString()
             )
             if (pokemon.typeTwo != null) {
                 options[DetailDialogFragment.BUNDLE_TYPE_TWO_KEY] = pokemon.typeTwo!!

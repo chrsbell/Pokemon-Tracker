@@ -34,9 +34,6 @@ class PokemonRepository(private val imageProcessor: ImageProcessor) {
                         if (info.types?.size == 2) {
                             typeTwo = info.types.last()?.name
                         }
-                        if (info.name == null || info.nat_dex_num == null) {
-                            val a =0;
-                        }
                         Pokemon(
                             name = info.name!!,
                             // num is null on some pokemon from api
@@ -68,5 +65,9 @@ class PokemonRepository(private val imageProcessor: ImageProcessor) {
             pokemonDao.updatePokemon(pokemon)
         }
         return pokemon
+    }
+
+    suspend fun updatePokemon(pokemon: Pokemon) {
+        pokemonDao.updatePokemon(pokemon)
     }
 }
