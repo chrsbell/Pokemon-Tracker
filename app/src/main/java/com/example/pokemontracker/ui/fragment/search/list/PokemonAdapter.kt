@@ -1,11 +1,13 @@
-package com.example.pokemontracker.ui.tracker.search
+package com.example.pokemontracker.ui.fragment.search.list
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemontracker.R
 import com.example.pokemontracker.database.Pokemon
-import com.example.pokemontracker.utils.ImageProcessor
+import com.example.pokemontracker.ui.image.ImageProcessor
 
 class PokemonAdapter (private val onClickListener: OnClickListener, private val imageProcessor: ImageProcessor)
     : RecyclerView.Adapter<PokemonListItemViewHolder>() {
@@ -19,6 +21,7 @@ class PokemonAdapter (private val onClickListener: OnClickListener, private val 
         notifyDataSetChanged()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: PokemonListItemViewHolder, position: Int) {
         val pokemon = allPokemon[position]
         holder.bind(pokemon)

@@ -1,4 +1,4 @@
-package com.example.pokemontracker.ui.tracker.search
+package com.example.pokemontracker.ui.fragment.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentSearchBinding
-import com.example.pokemontracker.ui.detail.DetailDialogFragment
+import com.example.pokemontracker.ui.fragment.detail.DetailDialogFragment
+import com.example.pokemontracker.ui.fragment.search.list.PokemonAdapter
 import com.example.pokemontracker.ui.snackbar.MessageView
 import com.example.pokemontracker.ui.snackbar.MessageProvider
 import org.koin.android.ext.android.inject

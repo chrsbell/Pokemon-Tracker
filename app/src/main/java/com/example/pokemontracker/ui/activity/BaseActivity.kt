@@ -1,4 +1,4 @@
-package com.example.pokemontracker.ui
+package com.example.pokemontracker.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

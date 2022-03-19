@@ -1,4 +1,4 @@
-package com.example.pokemontracker.ui
+package com.example.pokemontracker.ui.activity
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver

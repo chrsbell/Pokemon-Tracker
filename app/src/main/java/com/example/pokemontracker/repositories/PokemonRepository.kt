@@ -9,7 +9,7 @@ import com.example.pokemontracker.database.Pokemon
 import com.example.pokemontracker.database.PokemonDao
 import com.example.pokemontracker.database.PokemonDatabase
 import com.example.pokemontracker.database.getDatabase
-import com.example.pokemontracker.utils.ImageProcessor
+import com.example.pokemontracker.ui.image.ImageProcessor
 import org.koin.core.annotation.Single
 
 @Single

@@ -1,4 +1,4 @@
-package com.example.pokemontracker.ui.favorites
+package com.example.pokemontracker.ui.fragment.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,12 +1,13 @@
-package com.example.pokemontracker.ui.tracker.search
+package com.example.pokemontracker.ui.fragment.search
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.coroutineScope
 import com.example.pokemontracker.database.Pokemon
 import com.example.pokemontracker.repositories.PokemonRepository
-import com.example.pokemontracker.ui.BasePresenter
-import com.example.pokemontracker.ui.detail.DetailDialogFragment
-import com.example.pokemontracker.utils.ImageProcessor
+import com.example.pokemontracker.ui.activity.BasePresenter
+import com.example.pokemontracker.ui.fragment.detail.DetailDialogFragment
+import com.example.pokemontracker.ui.fragment.search.list.PokemonAdapter
+import com.example.pokemontracker.ui.image.ImageProcessor
 import com.example.pokemontracker.ui.snackbar.MessageProvider
 import org.koin.core.annotation.Factory
 

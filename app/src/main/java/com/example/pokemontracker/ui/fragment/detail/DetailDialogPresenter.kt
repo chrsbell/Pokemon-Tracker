@@ -1,12 +1,12 @@
-package com.example.pokemontracker.ui.detail
+package com.example.pokemontracker.ui.fragment.detail
 
 import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.coroutineScope
 import com.example.pokemontracker.repositories.PokemonRepository
-import com.example.pokemontracker.ui.BasePresenter
-import com.example.pokemontracker.utils.ImageProcessor
+import com.example.pokemontracker.ui.activity.BasePresenter
+import com.example.pokemontracker.ui.image.ImageProcessor
 import org.koin.core.annotation.Factory
 
 @Factory

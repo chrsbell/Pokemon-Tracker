@@ -2,8 +2,7 @@ package com.example.pokemontracker.repositories
 
 import android.content.Context
 import android.view.MenuItem
-import android.view.View
-import com.example.pokemontracker.ui.BaseActivity
+import com.example.pokemontracker.ui.activity.BaseActivity
 import org.koin.core.annotation.Single
 
 @Single

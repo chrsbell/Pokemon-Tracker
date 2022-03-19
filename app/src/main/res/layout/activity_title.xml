@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="@color/neutral_1"
         android:theme="@style/Theme.PokemonTracker.Light"
-        tools:context=".ui.title.TitleActivity">
+        tools:context=".ui.activity.title.TitleActivity">
 
         <TextView
             android:id="@+id/helloWorld"

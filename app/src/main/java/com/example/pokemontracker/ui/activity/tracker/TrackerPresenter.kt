@@ -1,9 +1,9 @@
-package com.example.pokemontracker.ui.tracker
+package com.example.pokemontracker.ui.activity.tracker
 
 import android.view.MenuItem
 import androidx.lifecycle.Lifecycle
 import com.example.pokemontracker.repositories.PreferencesRepository
-import com.example.pokemontracker.ui.BasePresenter
+import com.example.pokemontracker.ui.activity.BasePresenter
 import com.example.pokemontracker.ui.snackbar.MessageProvider
 import org.koin.core.annotation.Factory
 

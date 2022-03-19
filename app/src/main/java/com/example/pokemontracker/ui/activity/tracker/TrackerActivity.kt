@@ -1,28 +1,20 @@
-package com.example.pokemontracker.ui.tracker
+package com.example.pokemontracker.ui.activity.tracker
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.ActivityTrackerBinding
-import com.example.pokemontracker.ui.BaseActivity
-import com.example.pokemontracker.ui.favorites.FavoritesFragment
+import com.example.pokemontracker.ui.activity.BaseActivity
+import com.example.pokemontracker.ui.fragment.favorites.FavoritesFragment
 import com.example.pokemontracker.ui.snackbar.MessageProvider
 import com.example.pokemontracker.ui.snackbar.MessageView
-import com.example.pokemontracker.ui.tracker.search.SearchFragment
-import com.google.android.material.tabs.TabLayout
+import com.example.pokemontracker.ui.fragment.search.SearchFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.android.ext.android.inject
 
@@ -32,7 +24,7 @@ class TrackerActivity : MessageView, BaseActivity() {
 
     companion object {
         const val LAST_THEME = "lastTheme"
-        val TABS = arrayOf(R.string.search, )
+        const val NUM_TABS = 2
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,5 +86,5 @@ class TrackerPagingAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycl
         return FavoritesFragment()
     }
 
-    override fun getItemCount(): Int = 2
+    override fun getItemCount(): Int = TrackerActivity.NUM_TABS
 }

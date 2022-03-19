@@ -1,8 +1,7 @@
-package com.example.pokemontracker.ui.title
+package com.example.pokemontracker.ui.activity.title
 
-import com.example.pokemontracker.databinding.ActivityTitleBinding
-import com.example.pokemontracker.ui.BasePresenter
-import com.example.pokemontracker.ui.tracker.TrackerActivity
+import com.example.pokemontracker.ui.activity.BasePresenter
+import com.example.pokemontracker.ui.activity.tracker.TrackerActivity
 import org.koin.core.annotation.Factory
 
 @Factory

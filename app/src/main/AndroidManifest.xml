@@ -13,9 +13,9 @@
         android:theme="@style/Theme.PokemonTracker.Light"
         android:allowBackup="true">
 
-        <activity android:name=".ui.tracker.TrackerActivity"/>
+        <activity android:name="com.example.pokemontracker.ui.activity.tracker.TrackerActivity"/>
         <activity
-            android:name=".ui.title.TitleActivity"
+            android:name="com.example.pokemontracker.ui.activity.title.TitleActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

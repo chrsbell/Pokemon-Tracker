@@ -1,17 +1,20 @@
-package com.example.pokemontracker.ui.detail
+package com.example.pokemontracker.ui.fragment.detail
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentPokemonDetailBinding
-import com.example.pokemontracker.utils.ImageProcessor
+import com.example.pokemontracker.ui.image.ImageProcessor
+import com.example.pokemontracker.utils.getPokemonTypeColor
 import org.koin.android.ext.android.inject
 
 class DetailDialogFragment() : DialogFragment() {
@@ -44,6 +47,7 @@ class DetailDialogFragment() : DialogFragment() {
         isFavorite = arguments?.getString(BUNDLE_FAVORITE_KEY).toBoolean()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,10 +56,14 @@ class DetailDialogFragment() : DialogFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_pokemon_detail, container,
                 false)
         binding.pokemonDetailDescription.text = entry
-        binding.pokemonDetailTypeOne.text = typeOne
+        if (typeOne != null) {
+            binding.pokemonDetailTypeOne.text = typeOne
+            binding.pokemonDetailTypeCardOne.setCardBackgroundColor(getPokemonTypeColor(typeOne!!))
+        }
         // center type here
         if (typeTwo != null) {
             binding.pokemonDetailTypeTwo.text = typeTwo
+            binding.pokemonDetailTypeCardTwo.setCardBackgroundColor(getPokemonTypeColor(typeTwo!!))
         } else {
             binding.pokemonDetailTypeCardTwo.visibility = View.INVISIBLE
             val constraintLayout = binding.pokemonDetailTypeCardOne.layoutParams

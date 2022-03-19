@@ -1,4 +1,4 @@
-package com.example.pokemontracker.ui.title
+package com.example.pokemontracker.ui.activity.title
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -7,10 +7,10 @@ import android.transition.Fade
 import android.view.MotionEvent
 import androidx.core.content.ContextCompat
 import com.example.pokemontracker.R
-import com.example.pokemontracker.databinding.ActivityTitleBinding
-import com.example.pokemontracker.ui.BaseActivity
+import com.example.pokemontracker.ui.activity.BaseActivity
 import androidx.databinding.DataBindingUtil
-import com.example.pokemontracker.ui.tracker.TrackerActivity
+import com.example.pokemontracker.databinding.ActivityTitleBinding
+import com.example.pokemontracker.ui.activity.tracker.TrackerActivity
 import org.koin.android.ext.android.inject
 
 

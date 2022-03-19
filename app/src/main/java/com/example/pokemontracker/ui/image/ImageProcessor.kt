@@ -1,4 +1,4 @@
-package com.example.pokemontracker.utils
+package com.example.pokemontracker.ui.image
 
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -7,7 +7,6 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
 import androidx.core.net.toUri
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomViewTarget
@@ -20,7 +19,6 @@ import org.koin.core.annotation.Single
 class ImageProcessor() : Messaging {
     // the snackbar message provider will be different depending on what view the app is in
     private lateinit var messageProvider: MessageProvider
-    private lateinit var coroutineScope: LifecycleCoroutineScope
 
     override fun setMessageProvider(messageProvider: MessageProvider) {
         this.messageProvider = messageProvider
