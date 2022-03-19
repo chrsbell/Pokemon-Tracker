@@ -67,7 +67,7 @@ class PokemonRepository(private val imageProcessor: ImageProcessor) {
         return pokemon
     }
 
-    suspend fun updatePokemon(pokemon: Pokemon) {
-        pokemonDao.updatePokemon(pokemon)
-    }
+    suspend fun updatePokemon(pokemon: Pokemon) = pokemonDao.updatePokemon(pokemon)
+
+    suspend fun getAllFavorites(): List<Pokemon> = pokemonDao.getAllFavorites()
 }

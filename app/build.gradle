@@ -61,6 +61,7 @@ dependencies {
     // Koin for Android
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-annotations:$koin_annotations"
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
     ksp "io.insert-koin:koin-ksp-compiler:$koin_annotations"
 
     implementation 'com.github.bumptech.glide:glide:4.13.0'

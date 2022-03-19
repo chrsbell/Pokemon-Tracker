@@ -2,10 +2,8 @@ package com.example.pokemontracker.ui.fragment.search
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.coroutineScope
-import com.example.pokemontracker.database.Pokemon
 import com.example.pokemontracker.repositories.PokemonRepository
-import com.example.pokemontracker.ui.activity.BasePresenter
-import com.example.pokemontracker.ui.fragment.detail.DetailDialogFragment
+import com.example.pokemontracker.ui.activity.PokemonDetailPresenter
 import com.example.pokemontracker.ui.fragment.search.list.PokemonAdapter
 import com.example.pokemontracker.ui.image.ImageProcessor
 import com.example.pokemontracker.ui.snackbar.MessageProvider
@@ -13,33 +11,16 @@ import org.koin.core.annotation.Factory
 
 @Factory
 class SearchPresenter(
-    private val pokemonRepository: PokemonRepository,
-    private val imageProcessor: ImageProcessor,
+    pokemonRepository: PokemonRepository,
+    imageProcessor: ImageProcessor,
     private val messageProvider: MessageProvider
-) : BasePresenter<SearchFragment>() {
+) : PokemonDetailPresenter<SearchFragment>(pokemonRepository, imageProcessor) {
 
     override fun start(view: SearchFragment, viewLifecycle: Lifecycle) {
         super.start(view, viewLifecycle)
         view.setSnackbarView(messageProvider)
         imageProcessor.setMessageProvider(messageProvider)
         setupListAdapter()
-    }
-
-    private fun createDetailDialog(item: Pokemon) {
-        viewLifecycle.coroutineScope.launchWhenResumed {
-            val pokemon = pokemonRepository.findByPokedexNumber(item.num)
-            val options = mutableMapOf(
-                DetailDialogFragment.BUNDLE_NUM_KEY to pokemon.num.toString(),
-                DetailDialogFragment.BUNDLE_ENTRY_KEY to pokemon.entry,
-                DetailDialogFragment.BUNDLE_TYPE_ONE_KEY to pokemon.typeOne,
-                DetailDialogFragment.BUNDLE_IMAGE_KEY to pokemon.frontSprite,
-                DetailDialogFragment.BUNDLE_FAVORITE_KEY to pokemon.isFavorite.toString()
-            )
-            if (pokemon.typeTwo != null) {
-                options[DetailDialogFragment.BUNDLE_TYPE_TWO_KEY] = pokemon.typeTwo!!
-            }
-            view.showDialog(options)
-        }
     }
 
     private fun setupListAdapter() {

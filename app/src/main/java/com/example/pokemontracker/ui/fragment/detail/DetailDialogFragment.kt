@@ -13,7 +13,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentPokemonDetailBinding
-import com.example.pokemontracker.ui.image.ImageProcessor
+import com.example.pokemontracker.ui.image.PaletteReadyCallback
+import com.example.pokemontracker.ui.image.ResourceReadyCallback
 import com.example.pokemontracker.utils.getPokemonTypeColor
 import org.koin.android.ext.android.inject
 
@@ -78,17 +79,15 @@ class DetailDialogFragment() : DialogFragment() {
         this.isFavorite?.let { updateFavoriteIcon(it) }
         if (imageUrl != null) {
             presenter.loadImage(binding.pokemonDetailImage, imageUrl!!,
-                ImageProcessor.ResourceReadyCallback {
+                ResourceReadyCallback {
                         presenter.getBackgroundColor(binding.cardConstraintLayout, it.toBitmap(),
-                            ImageProcessor.PaletteReadyCallback { palette, view ->
+                            PaletteReadyCallback { palette, view ->
                                 view.setBackgroundColor(palette.getVibrantColor(Color.TRANSPARENT))
                         })
                 })
         }
 
         presenter.start(this, lifecycle)
-
-
 
         return binding.root
     }

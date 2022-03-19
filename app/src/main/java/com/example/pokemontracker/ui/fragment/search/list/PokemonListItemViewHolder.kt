@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemontracker.R
 import com.example.pokemontracker.database.Pokemon
 import com.example.pokemontracker.ui.image.ImageProcessor
+import com.example.pokemontracker.ui.image.ResourceReadyCallback
 import com.example.pokemontracker.utils.formatPokemonName
 import com.example.pokemontracker.utils.formatPokemonNumber
 import com.example.pokemontracker.utils.getPokemonTypeColor
@@ -81,7 +82,7 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
         pokemonNumber.text = formatPokemonNumber(item.num)
 
         imageProcessor.loadImage(pokemonImg, item.frontSprite,
-            ImageProcessor.ResourceReadyCallback { resource ->
+            ResourceReadyCallback { resource ->
                 imageProcessor.getColorPalette(
                     itemView,
                     resource.toBitmap(),

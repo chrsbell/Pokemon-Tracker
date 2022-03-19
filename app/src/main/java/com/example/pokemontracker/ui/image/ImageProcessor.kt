@@ -24,10 +24,6 @@ class ImageProcessor() : Messaging {
         this.messageProvider = messageProvider
     }
 
-    class ResourceReadyCallback(private val callback: ((resource: Drawable) -> Unit)? = null) {
-        fun run(resource: Drawable) = callback?.invoke(resource)
-    }
-
     fun loadImage(
         imageView: ImageView, url: String,
         resourceReadyCallback: ResourceReadyCallback? = null
@@ -49,12 +45,6 @@ class ImageProcessor() : Messaging {
                     messageProvider.showMessage("Couldn't load image.")
                 }
             })
-    }
-
-    class PaletteReadyCallback(
-        private val callback: ((palette: Palette, view: View) -> Unit)? = null
-    ) {
-        fun run(palette: Palette, view: View) = callback?.invoke(palette, view)
     }
 
     fun getColorPalette(

@@ -18,4 +18,7 @@ interface PokemonDao {
 
     @Update
     suspend fun updatePokemon(pokemon: Pokemon)
+
+    @Query("SELECT * FROM pokemon WHERE isFavorite IS 1")
+    suspend fun getAllFavorites(): List<Pokemon>
 }
