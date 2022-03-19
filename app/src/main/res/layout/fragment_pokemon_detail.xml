@@ -23,7 +23,7 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_small"
                 android:layout_marginBottom="@dimen/margin_small"
-                android:background="@color/neutral_1">
+                android:background="@android:color/transparent">
 
                 <ImageView
                     android:id="@+id/pokemon_detail_image"

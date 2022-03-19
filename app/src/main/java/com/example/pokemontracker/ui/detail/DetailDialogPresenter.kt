@@ -1,5 +1,7 @@
 package com.example.pokemontracker.ui.detail
 
+import android.graphics.Bitmap
+import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.coroutineScope
 import com.example.pokemontracker.repositories.PokemonRepository
@@ -12,8 +14,12 @@ class DetailDialogPresenter(
     private val imageProcessor: ImageProcessor,
     private val repository: PokemonRepository
     ) : BasePresenter<DetailDialogFragment>() {
-        fun loadImage(imageView: ImageView, imageUrl: String) {
-            imageProcessor.loadImage(imageView, imageUrl)
+        fun loadImage(
+            imageView: ImageView,
+            imageUrl: String,
+            resourceReadyCallback: ImageProcessor.ResourceReadyCallback
+        ) {
+            imageProcessor.loadImage(imageView, imageUrl, resourceReadyCallback)
         }
 
     fun onFavorite(pokemonIndex: Int) {
@@ -24,4 +30,8 @@ class DetailDialogPresenter(
                 view.updateFavoriteIcon(pokemon.isFavorite)
             }
         }
+
+    fun getBackgroundColor(view: View, bitmap: Bitmap,
+                           paletteReadyCallback: ImageProcessor.PaletteReadyCallback) =
+        imageProcessor.getColorPalette(view, bitmap, paletteReadyCallback)
 }

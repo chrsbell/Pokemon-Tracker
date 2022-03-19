@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentPokemonDetailBinding
+import com.example.pokemontracker.utils.ImageProcessor
 import org.koin.android.ext.android.inject
 
 class DetailDialogFragment() : DialogFragment() {
@@ -66,9 +68,19 @@ class DetailDialogFragment() : DialogFragment() {
             pokemonIndex?.let { num -> presenter.onFavorite(num) }
         })
         this.isFavorite?.let { updateFavoriteIcon(it) }
-        imageUrl?.let { presenter.loadImage(binding.pokemonDetailImage, it) }
+        if (imageUrl != null) {
+            presenter.loadImage(binding.pokemonDetailImage, imageUrl!!,
+                ImageProcessor.ResourceReadyCallback {
+                        presenter.getBackgroundColor(binding.cardConstraintLayout, it.toBitmap(),
+                            ImageProcessor.PaletteReadyCallback { palette, view ->
+                                view.setBackgroundColor(palette.getVibrantColor(Color.TRANSPARENT))
+                        })
+                })
+        }
 
         presenter.start(this, lifecycle)
+
+
 
         return binding.root
     }

@@ -6,12 +6,10 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
-import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.pokemontracker.ui.snackbar.MessageProvider
@@ -24,29 +22,30 @@ class ImageProcessor() : Messaging {
     private lateinit var messageProvider: MessageProvider
     private lateinit var coroutineScope: LifecycleCoroutineScope
 
-    fun getUri(imgUrl : String?) = imgUrl?.toUri()?.buildUpon()?.scheme("https")?.build()
-
     override fun setMessageProvider(messageProvider: MessageProvider) {
         this.messageProvider = messageProvider
     }
 
-    fun loadImage(imageView: ImageView, url: String, itemView: View? = null) {
+    class ResourceReadyCallback(private val callback: ((resource: Drawable) -> Unit)? = null) {
+        fun run(resource: Drawable) = callback?.invoke(resource)
+    }
+
+    fun loadImage(
+        imageView: ImageView, url: String,
+        resourceReadyCallback: ResourceReadyCallback? = null
+    ) {
         Glide.with(imageView.context)
             .load(url.toUri())
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(object : CustomViewTarget<ImageView, Drawable>(imageView) {
                 override fun onResourceReady(
                     resource: Drawable,
                     transition: Transition<in Drawable>?
                 ) {
                     imageView.setImageDrawable(resource)
-                    if (itemView != null) {
-                        setGradientAsync(itemView, resource.toBitmap())
-                    }
+                    resourceReadyCallback?.run(resource)
                 }
 
-                override fun onResourceCleared(placeholder: Drawable?) {
-                }
+                override fun onResourceCleared(placeholder: Drawable?) {}
 
                 override fun onLoadFailed(errorDrawable: Drawable?) {
                     messageProvider.showMessage("Couldn't load image.")
@@ -54,19 +53,29 @@ class ImageProcessor() : Messaging {
             })
     }
 
-    fun setGradientAsync(view: View, bitmap: Bitmap) {
+    class PaletteReadyCallback(
+        private val callback: ((palette: Palette, view: View) -> Unit)? = null
+    ) {
+        fun run(palette: Palette, view: View) = callback?.invoke(palette, view)
+    }
+
+    fun getColorPalette(
+        view: View, bitmap: Bitmap,
+        paletteReadyCallback: PaletteReadyCallback? = null
+    ) {
         Palette.from(bitmap).generate {
-            palette ->
-            run {
-                if (palette != null) {
-                    view.background = GradientDrawable(
-                        GradientDrawable.Orientation.LEFT_RIGHT, intArrayOf(
-                            palette.getVibrantColor(Color.TRANSPARENT),
-                            Color.TRANSPARENT
-                        )
-                    )
-                }
+            if (it != null) {
+                paletteReadyCallback?.run(it, view)
             }
         }
+    }
+
+    fun setGradientAsync() = PaletteReadyCallback { palette, view ->
+        view.background = GradientDrawable(
+            GradientDrawable.Orientation.LEFT_RIGHT, intArrayOf(
+                palette.getVibrantColor(Color.TRANSPARENT),
+                Color.TRANSPARENT
+            )
+        )
     }
 }

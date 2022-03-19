@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemontracker.R
 import com.example.pokemontracker.database.Pokemon
@@ -71,7 +72,15 @@ class PokemonListItemViewHolder(itemView: View, private val imageProcessor: Imag
             pokemonTypeOneCard.requestLayout()
         }
         pokemonNumber.text = formatPokemonNumber(item.num)
-        imageProcessor.loadImage(pokemonImg, item.frontSprite, itemView)
+
+        imageProcessor.loadImage(pokemonImg, item.frontSprite,
+            ImageProcessor.ResourceReadyCallback { resource ->
+                imageProcessor.getColorPalette(
+                    itemView,
+                    resource.toBitmap(),
+                    imageProcessor.setGradientAsync())
+            }
+        )
 
         // remove all pre-existing callbacks
         handler.removeCallbacksAndMessages(null)
