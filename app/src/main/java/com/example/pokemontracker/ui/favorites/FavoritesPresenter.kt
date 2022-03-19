@@ -5,4 +5,5 @@ import org.koin.core.annotation.Factory
 
 @Factory
 class FavoritesPresenter() : BasePresenter<FavoritesFragment>() {
+
 }
