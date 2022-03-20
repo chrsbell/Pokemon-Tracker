@@ -1,11 +1,9 @@
-package com.example.pokemontracker.ui.activity
+package com.example.pokemontracker.ui.image
 
 import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
-import com.example.pokemontracker.ui.image.ImageProcessor
-import com.example.pokemontracker.ui.image.PaletteReadyCallback
-import com.example.pokemontracker.ui.image.ResourceReadyCallback
+import com.example.pokemontracker.ui.activity.BasePresenter
 
 abstract class ImagePresenter<PresenterView: Any>(val imageProcessor: ImageProcessor)
     : BasePresenter<PresenterView>() {

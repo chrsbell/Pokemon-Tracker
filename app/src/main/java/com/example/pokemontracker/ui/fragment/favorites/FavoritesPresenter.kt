@@ -3,7 +3,7 @@ package com.example.pokemontracker.ui.fragment.favorites
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.coroutineScope
 import com.example.pokemontracker.repositories.PokemonRepository
-import com.example.pokemontracker.ui.activity.PokemonDetailPresenter
+import com.example.pokemontracker.ui.fragment.detail.PokemonDetailPresenter
 import com.example.pokemontracker.ui.image.ImageProcessor
 import org.koin.core.annotation.Factory
 

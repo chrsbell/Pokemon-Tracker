@@ -25,8 +25,7 @@ class MessageProvider() : LifecycleObserver {
 
     fun showMessage(text: String) {
         if (view != null) {
-            val snackbar = Snackbar.make(view!!, text, Snackbar.LENGTH_SHORT)
-            snackbar.show()
+            Snackbar.make(view!!, text, Snackbar.LENGTH_SHORT).show()
         } else {
             Timber.d(text)
         }

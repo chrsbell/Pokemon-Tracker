@@ -1,10 +1,9 @@
-package com.example.pokemontracker.ui.activity
+package com.example.pokemontracker.ui.fragment.detail
 
 import androidx.lifecycle.coroutineScope
 import com.example.pokemontracker.database.Pokemon
 import com.example.pokemontracker.repositories.PokemonRepository
-import com.example.pokemontracker.ui.fragment.DetailFragment
-import com.example.pokemontracker.ui.fragment.detail.DetailDialogFragment
+import com.example.pokemontracker.ui.image.ImagePresenter
 import com.example.pokemontracker.ui.image.ImageProcessor
 
 abstract class PokemonDetailPresenter<DialogPresenter: DetailFragment>

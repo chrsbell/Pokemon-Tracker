@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentSearchBinding
-import com.example.pokemontracker.ui.fragment.DetailFragment
+import com.example.pokemontracker.ui.fragment.detail.DetailFragment
 import com.example.pokemontracker.ui.fragment.search.list.PokemonAdapter
 import com.example.pokemontracker.ui.snackbar.MessageView
 import com.example.pokemontracker.ui.snackbar.MessageProvider

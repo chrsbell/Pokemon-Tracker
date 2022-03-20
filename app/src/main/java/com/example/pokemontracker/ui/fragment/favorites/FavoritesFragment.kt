@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import com.example.pokemontracker.R
 import com.example.pokemontracker.databinding.FragmentFavoritesBinding
-import com.example.pokemontracker.ui.fragment.DetailFragment
+import com.example.pokemontracker.ui.fragment.detail.DetailFragment
 import org.koin.android.ext.android.inject
 
 class FavoritesFragment : DetailFragment() {

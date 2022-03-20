@@ -3,7 +3,7 @@ package com.example.pokemontracker.ui.fragment.search
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.coroutineScope
 import com.example.pokemontracker.repositories.PokemonRepository
-import com.example.pokemontracker.ui.activity.PokemonDetailPresenter
+import com.example.pokemontracker.ui.fragment.detail.PokemonDetailPresenter
 import com.example.pokemontracker.ui.fragment.search.list.PokemonAdapter
 import com.example.pokemontracker.ui.image.ImageProcessor
 import com.example.pokemontracker.ui.snackbar.MessageProvider
