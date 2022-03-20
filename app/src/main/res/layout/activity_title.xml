@@ -11,7 +11,7 @@
         tools:context=".ui.activity.title.TitleActivity">
 
         <TextView
-            android:id="@+id/helloWorld"
+            android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik_mono_one"
