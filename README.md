@@ -41,7 +41,7 @@ I integrated [Koin](https://insert-koin.io/) annotations to create
 class instances with required dependencies.
 * I used `@Factory` annotations on
   presenters since they can be created and recreated corresponding to the
-  lifecycle of their fragments. I added `@Single`annotations to the repositories
+  lifecycle of their fragments. I added `@Single` annotations to the repositories
   and image processor class since they only need one instance.
 
 ### Data
