@@ -152,7 +152,8 @@ Similarly, the favorites fragment inherits from the `PokemonDetailPresenter`.
 Finally, the detail dialog fragment inherits directly from the `ImagePresenter`
 to display sprites inside the dialog.
 * I refactored some of the hardcoded callbacks invoked after asynchronous image processing inside the `ImageProcessor` while working on this fragment.
-* This allowed me to more easily set up the `ImagePresenter` which all of the fragments inherit from.
+* This allowed me to more easily set up the `ImagePresenter` which all of the fragments inherit from. 
+* For example, descendants of `ImagePresenter` can now pass in their own callback functions upon finishing loading or constructing a palette from an image instead of relying on the `ImageProcessor` to figure out what needs to be done with a processed image.
 
 ![Detail dialog fragment](https://i.imgur.com/rUJFOqH.png)
 ![Image processor](https://i.imgur.com/IP247TI.png)
