@@ -5,6 +5,11 @@
 Pokemon Tracker is an android app that allows users to search, favorite, and
 view pokemon!
 
+[**Screenshots of the app with view descriptions located in this album**](https://imgur.com/a/EDhRRc9)
+
+![Title activity](https://i.imgur.com/wrWlMu0.png)
+![Screenshot 2](https://i.imgur.com/f2ho2jY.png) 
+
 ## App Flow and UI Components
 
 This is the general app flow:
